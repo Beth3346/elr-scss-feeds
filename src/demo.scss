@@ -39,3 +39,7 @@
   position: relative;
   padding: ($base-fontsize * 1.5) 0;
 }
+
+.activity-feed {
+  @include elr-activity-feed;
+}

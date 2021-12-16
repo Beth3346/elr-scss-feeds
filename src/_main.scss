@@ -1,12 +1,75 @@
 @import "elr-scss-functions/src/main";
+@import "elr-scss-config/src/main";
 
-@mixin elr-steps($config: ()) {
+@mixin elr-activity-feed($config: ()) {
   $config: extend(
     (
-      color: #333,
+      color: $text-color,
     ),
     $config
   );
 
   $color: map-get($config, color);
+  padding-left: $base-fontsize;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+    padding: ($base-fontsize * 0.5) 0 ($base-fontsize * 0.5)
+      ($base-fontsize * 2);
+    border-left: 1px solid $text-color;
+    position: relative;
+
+    &:first-of-type {
+      padding-top: $base-fontsize;
+    }
+
+    &:last-of-type {
+      padding-bottom: $base-fontsize;
+    }
+
+    .icon {
+      box-shadow: 0 0 0 6px #fff;
+      height: 26px;
+      width: 26px;
+      border-radius: (32px * 0.5);
+      background-color: $white;
+      border: 3px solid $text-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: -(26px * 0.5);
+      top: calc(50% - 16px);
+      font-size: 10px;
+      color: $text-color;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    p {
+      padding: 0;
+      margin: 0;
+      color: $color;
+
+      &.activity-item-title {
+        font-weight: 900;
+      }
+
+      &.activity-item-description {
+        font-size: 14px;
+        color: $dark-gray;
+      }
+
+      &.activity-item-timestamp {
+        font-size: 12px;
+        color: $gray;
+      }
+    }
+  }
 }
