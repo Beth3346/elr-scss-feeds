@@ -5,11 +5,14 @@
   $config: extend(
     (
       color: $text-color,
+      accent-color: $primary-color,
     ),
     $config
   );
 
   $color: map-get($config, color);
+  $accent-color: map-get($config, accent-color);
+
   padding-left: $base-fontsize;
 
   ul {
@@ -19,19 +22,28 @@
   }
 
   li {
+    padding: 0;
     margin: 0;
-    padding: ($base-fontsize * 0.5) 0 ($base-fontsize * 0.5)
-      ($base-fontsize * 2);
-    border-left: 1px solid $text-color;
-    position: relative;
 
     &:first-of-type {
-      padding-top: $base-fontsize;
+      .activity-feed-item {
+        padding-top: $base-fontsize;
+      }
     }
 
     &:last-of-type {
-      padding-bottom: $base-fontsize;
+      .activity-feed-item {
+        padding-bottom: $base-fontsize;
+      }
     }
+  }
+
+  .activity-feed-item {
+    margin: 0;
+    padding: ($base-fontsize * 0.5) 0 ($base-fontsize * 0.5)
+      ($base-fontsize * 2);
+    border-left: 1px solid $accent-color;
+    position: relative;
 
     .icon {
       box-shadow: 0 0 0 6px #fff;
@@ -39,7 +51,7 @@
       width: 26px;
       border-radius: (32px * 0.5);
       background-color: $white;
-      border: 3px solid $text-color;
+      border: 3px solid $accent-color;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -47,7 +59,7 @@
       left: -(26px * 0.5);
       top: calc(50% - 16px);
       font-size: 10px;
-      color: $text-color;
+      color: $accent-color;
       font-weight: 900;
       line-height: 1;
     }
@@ -62,14 +74,17 @@
       }
 
       &.activity-item-description {
-        font-size: 14px;
+        font-size: ($base-fontsize * 0.825);
         color: $dark-gray;
       }
-
-      &.activity-item-timestamp {
-        font-size: 12px;
-        color: $gray;
-      }
     }
+  }
+
+  .activity-item-timestamp {
+    font-size: 12px;
+    color: $gray;
+    margin: 0;
+    padding-top: ($base-fontsize * 0.25);
+    padding-bottom: ($base-fontsize * 0.25);
   }
 }
